@@ -28,8 +28,7 @@ fetch("https://www.instagram.com/xxdev.id/").then(response => response.text()).t
     window.instagramScrappingResult = window._sharedData.entry_data.ProfilePage[0].graphql.user;
     window.instagramScrappingHtml = '';
     window.instagramScrappingResult.edge_owner_to_timeline_media.edges.forEach(function (media, index) {
-        if (index <= 3) {
-            console.log(media)
+        if (index < 3) {
             window.instagramScrappingHtml += `
                         <div class="blog-col">
                             <a href="https://www.instagram.com/p/` + media.node.shortcode + `" target="_blank">
