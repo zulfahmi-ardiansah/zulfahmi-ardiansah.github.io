@@ -495,15 +495,20 @@ header nav .btn {
 
 }
 
+#portfolio .portfolio-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 #portfolio .portfolio-col {
-    width: 420px;
-    float: left;
-    padding: 20px 45px;
+    padding: 0px 25px;
+    margin-bottom: 50px;
 }
 
 #portfolio .portfolio-col img {
     max-width: 100%;
     box-shadow: 0px 25px 46px rgba(72, 72, 72, 0.05);
+    border-radius: 17px;
 }
 
 #portfolio .portfolio-col h4 {
@@ -517,10 +522,6 @@ header nav .btn {
     color: #7C7C7D;
     font-size: 11pt;
     text-align: justify;
-}
-
-#portfolio .portfolio-row {
-    width: calc(420px * 6);
 }
 
 #portfolio .title {
@@ -564,6 +565,11 @@ header nav .btn {
 
     #portfolio .portfolio-col p {
         font-size: 10.5pt;
+    }
+
+    #portfolio .portfolio-row {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 }
 
@@ -718,4 +724,36 @@ header nav .btn {
 
 #portfolio .scroll-portfolio img {
     display: inline-block;
+}
+
+.scroll-icon {
+    width: 15px;
+    height: 30px;
+    border: 2px solid #32315a;
+    border-radius: 10px;
+    position: relative;
+}
+
+.scroll-icon span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: #32315a;
+    border-radius: 50%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-55%);
+    margin-top: 5px;
+    animation: scrollMouse 1s infinite ease-in-out;
+}
+
+@keyframes scrollMouse {
+    from {
+        margin-top: 5px;
+    }
+
+    to {
+        margin-top: 15px;
+    }
 }
