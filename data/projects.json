@@ -1,0 +1,83 @@
+[
+    {
+        "title": "iProc Analytic",
+        "role": "Technical Lead",
+        "related": "ADW Consulting",
+        "description": "An integrated solution for unlocking insights from procurement data through reporting and analytics.",
+        "sets": [
+            "php", "postgre", "laravel", "javascript", "highcharts"
+        ]
+    },
+    {
+        "title": "Centralized Integrated Vendor Database SKK Migas",
+        "role": "Java Developer",
+        "related": "ADW Consulting",
+        "description": "An integrated partner database system to increase efficiency in the process of assessing the administrative requirements of PQ.",
+        "sets": [
+            "java", "struts", "spring", "postgre", "javascript", "bootstrap"
+        ]
+    },
+    {
+        "title": "Doi Masaru Catering System (JP)",
+        "role": "Back-End Developer",
+        "related": "Freelancer",
+        "description": "A system to manage catering business, starting from the supply and customer purchase, delivery, item inventory, and invoicing.",
+        "sets": [
+            "java", "spring", "postgre"
+        ]
+    },
+    {
+        "title": "JA Hakui Attendance System (JP)",
+        "role": "Back-End Developer",
+        "related": "Freelancer",
+        "description": "A system to manage employee attendance, starting from the daily attendance process, leave permits, to calculating the payroll.",
+        "sets": [
+            "java", "spring", "postgre"
+        ]
+    },
+    {
+        "title": "Tender Info Pengadaan.com",
+        "role": "Data Engineer",
+        "related": "ADW Consulting",
+        "description": "A  platform for discovering tender and RFI opportunities by aggregating comprehensive information from many sectors.",
+        "sets": [
+            "python", "mongo-db", "sql-server", "metabase"
+        ]
+    },
+    {
+        "title": "Website and Membership System IAPI",
+        "role": "Technical Lead",
+        "related": "ADW Consulting",
+        "description": "A system simplifies the registration process to get an IAPI  membership identity, integrated with payment gateway.",
+        "sets": [
+            "php", "laravel", "mysql", "javascript", "bootstrap"
+        ]
+    },
+    {
+        "title": "ePKS Adira Dinamika Multi Finance",
+        "role": "Java Developer",
+        "related": "ADW Consulting",
+        "description": "A system to form cooperation agreements between Adira and partners electronically and integrated, integrated with eSign.",
+        "sets": [
+            "java", "struts", "sql-server", "javascript", "bootstrap"
+        ]
+    },
+    {
+        "title": "iProc Asuransi Kredit Indonesia",
+        "role": "Java Developer",
+        "related": "ADW Consulting",
+        "description": "An Integrated electronic procurement management, contract and vendor management.",
+        "sets": [
+            "java", "struts", "ibm-db2", "javascript", "bootstrap"
+        ]
+    },
+    {
+        "title": "SIKELABANG Balai Pemasyarakatan Kelas II Serang",
+        "role": "Web Developer",
+        "related": "Freelancer",
+        "description": "OSPS (One Stop Public Service) which can make it easier for the community to get services.",
+        "sets": [
+            "php", "laravel", "mysql", "javascript", "bootstrap"
+        ]
+    }
+]

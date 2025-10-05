@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Develop",
+        "icon": "develop",
+        "description": "Code Build Deliver",
+        "skills": [
+            "Back-End Engineer",
+            "Front-End Engineer"
+        ],
+        "sets": [
+            "java",
+            "spring",
+            "php",
+            "laravel",
+            "javascript"
+        ]
+    },
+    {
+        "title": "Design",
+        "icon": "design",
+        "description": "Shape Experiences",
+        "skills": [
+            "User Interface Designer",
+            "Graphic Designer"
+        ],
+        "sets": [
+            "figma",
+            "adobe"
+        ]
+    },
+    {
+        "title": "Data",
+        "icon": "data",
+        "description": "Insights That Drive",
+        "skills": [
+            "Data Engineer",
+            "Data Analytic"
+        ],
+        "sets": [
+            "sql",
+            "python",
+            "metabase",
+            "highcharts"
+        ]
+    }
+]
