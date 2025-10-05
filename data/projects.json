@@ -25,5 +25,23 @@
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
+    },
+    {
+        "title": "Tukeran.com",
+        "role": "Web Developer",
+        "related": "Freelancer",
+        "description": "A pioneering startup in Indonesia that innovates by combining traditional bartering culture with digital culture.",
+        "sets": [
+            "php", "laravel", "mysql", "javascript", "bootstrap"
+        ]
+    },
+    {
+        "title": "Sobat Siswa",
+        "role": "Web Developer",
+        "related": "Freelancer",
+        "description": "An academic information system that facilitate learning activities, student coaching, and communication between parents and the school.",
+        "sets": [
+            "php", "laravel", "mysql", "javascript", "bootstrap"
+        ]
     }
 ]
