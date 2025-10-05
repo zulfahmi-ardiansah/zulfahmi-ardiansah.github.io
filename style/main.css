@@ -418,6 +418,7 @@ section#project .single-project:hover .container-single-project span {
     background: rgba(255, 255, 255, 0.075);
 }
 
+section#project .hide,
 section#project .single-project.hide {
     display: none;
 }

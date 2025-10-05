@@ -155,14 +155,14 @@
                 </template>
             </div>
         </section>
-        <section id="project" x-data="{isProjectsOpened: false}">
+        <section id="project" x-data="{isProjectsOpened: false, projects: []}" x-init="projects = await (await fetch('./data/projects.json')).json()">
             <h2 class="sub-title" data-aos-duration="500" data-aos-delay="250" data-aos="fade-up">
                 <small>
                     Project
                 </small>
                 What I Work On?
             </h2>
-            <div data-aos-duration="500" data-aos-delay="250" data-aos="fade-up" class="container-project" x-data="{projects: []}" x-init="projects = await (await fetch('./data/projects.json')).json()">
+            <div data-aos-duration="500" data-aos-delay="250" data-aos="fade-up" class="container-project">
                 <template x-for="(project, index) in projects" :key="index">
                     <div class="single-project" x-bind:class="index > 2 && !isProjectsOpened ? 'hide' : ''">
                         <h3>
@@ -186,7 +186,7 @@
                     </div>
                 </template>
             </div>
-            <button x-on:click="isProjectsOpened = !isProjectsOpened">
+            <button x-on:click="isProjectsOpened = !isProjectsOpened" x-bind:class="projects.length > 3 ? '' : 'hide'">
                 <span x-text="isProjectsOpened ? 'Show Less' : 'Show More'"></span> 
                 <svg x-bind:style="isProjectsOpened ? 'transform: rotate(180deg);' : ''" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.2929 0.292893C12.6834 -0.0976311 13.3164 -0.0976311 13.707 0.292893C14.0975 0.683418 14.0975 1.31643 13.707 1.70696L7.70696 7.70696C7.31643 8.09748 6.68342 8.09748 6.29289 7.70696L0.292893 1.70696C-0.0976311 1.31643 -0.0976311 0.683418 0.292893 0.292893C0.683418 -0.0976311 1.31643 -0.0976311 1.70696 0.292893L6.99992 5.58586L12.2929 0.292893Z" fill="white"/>
