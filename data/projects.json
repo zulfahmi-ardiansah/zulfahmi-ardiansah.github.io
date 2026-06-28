@@ -27,6 +27,15 @@
         ]
     },
     {
+        "title": "Asia Cipta Management Company Profile",
+        "role": "Web Developer",
+        "related": "Freelancer",
+        "description": "A company profile for ACM Indonesia.",
+        "sets": [
+            "php", "laravel", "mysql", "javascript", "bootstrap"
+        ]
+    },
+    {
         "title": "Tukeran.com",
         "role": "Web Developer",
         "related": "Freelancer",
