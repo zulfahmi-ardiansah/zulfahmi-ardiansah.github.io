@@ -27,10 +27,10 @@
         ]
     },
     {
-        "title": "Asia Cipta Management Company Profile",
+        "title": "ACM Company Profile",
         "role": "Web Developer",
         "related": "Freelancer",
-        "description": "A company profile for ACM Indonesia.",
+        "description": "A website that provides company information, membership details, industry blog posts, and an integrated certification verification page.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
