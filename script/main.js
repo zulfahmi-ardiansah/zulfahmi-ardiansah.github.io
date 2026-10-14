@@ -68,8 +68,10 @@ function renderProjectChoice(item, index) {
   button.setAttribute('aria-controls', 'project-feature');
   button.append(element('span', 'project-choice-number', String(index + 1).padStart(2, '0')));
   const copy = element('span', 'project-choice-copy');
-  copy.append(element('strong', '', item.title), element('small', '', item.domain || item.role));
-  button.append(copy, element('span', 'project-choice-arrow', '↗'));
+  copy.append(element('strong', '', item.title), element('span', 'project-choice-client', item.client));
+  const arrow = element('span', 'project-choice-arrow', '↗');
+  arrow.setAttribute('aria-hidden', 'true');
+  button.append(copy, arrow);
   return button;
 }
 
@@ -108,7 +110,11 @@ function renderBlog(item, index) {
   link.href = item.link;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
-  link.append(element('span', 'blog-number', String(index + 1).padStart(2, '0')), element('span', 'blog-source', item.source), element('h3', '', item.title), element('span', 'blog-action', `Read on ${item.source} ↗`));
+  const action = element('span', 'blog-action');
+  const actionArrow = element('span', '', '↗');
+  actionArrow.setAttribute('aria-hidden', 'true');
+  action.append(element('span', '', `Read on ${item.source}`), actionArrow);
+  link.append(element('span', 'blog-number', String(index + 1).padStart(2, '0')), element('span', 'blog-source', item.source), element('h3', '', item.title), action);
   return link;
 }
 
@@ -209,17 +215,6 @@ function initPageMotion() {
   }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const type = document.getElementById('accent-type');
-  const words = ['Pinging', 'Coding', 'Designing'];
-  let index = 0;
-  window.setInterval(() => {
-    type.classList.add('is-changing');
-    window.setTimeout(() => {
-      index = (index + 1) % words.length;
-      type.textContent = words[index];
-      type.classList.remove('is-changing');
-    }, 220);
-  }, 4200);
   if (!('IntersectionObserver' in window)) return;
   const reveal = new IntersectionObserver(entries => {
     entries.forEach(entry => {
