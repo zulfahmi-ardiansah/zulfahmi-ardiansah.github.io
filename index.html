@@ -1,333 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Zulfahmi Ardiansah">
-    <meta name="description" content="Zulfahmi Ardiansah's Portfolio website contains the abilities and work experience.">
-    <meta name="keywords" content="zulfahmi,ardiansah,zulfahmi ardiansah,web,web developer,php,web programmer,php programmer,js programmer,java,programming,python,python programmer,indonesia,jakarta">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="3 days">
-    <meta name="author" content="Zulfahmi Ardiansah">
-    <meta name="google-site-verification" content="NPqWfc3LGSQ6XS_QXx1eKRzoxvCu_zSYCrytIoPtzrY" />
-    <title>Zulfahmi Ardiansah</title>
-    <link rel="icon" href="./image/logo.svg" sizes="16x16"> 
-    <link rel="stylesheet" href="./style/main.min.css">
-    <link rel="stylesheet" href="./style/mobile.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./script/grained.min.js"></script>
-    <script src="./script/main.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Zulfahmi Ardiansah builds web products across engineering, interface design, and data. Explore selected work in operations, public services, and education.">
+  <meta name="author" content="Zulfahmi Ardiansah">
+  <meta name="google-site-verification" content="NPqWfc3LGSQ6XS_QXx1eKRzoxvCu_zSYCrytIoPtzrY">
+  <title>Zulfahmi Ardiansah | Developer, Designer & Data Enthusiast</title>
+  <link rel="icon" href="./image/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/main.css">
+  <script src="./script/main.js" defer></script>
 </head>
 <body>
-    <!--
-        Thank you for taking the time to look at the source code :)
-        I built this project primarily using Vanilla CSS, Alpine.js, and integrated libraries like Grained (by Sarath Saleem) and AOS.
-        My inspiration comes from the work of several fantastic designers and studios, including Keith Yamada, izzy, Herma.one, Garry Simon, AntiKode, and Mata Foundry.
-        Please use this merely as a reference. I strongly encourage you to avoid direct copying.
-        The best approach is to create something truly unique by gathering inspiration from a diverse range of sources. Happy creating!
-    -->
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#about">
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a href="#skillset">
-                        Skillset
-                    </a>
-                </li>
-                <li>
-                    <a href="#project">
-                        Project
-                    </a>
-                </li>
-                <li>
-                    <a href="#blog">
-                        Blog
-                    </a>
-                </li>
-                <li class="hide-mobile">
-                    <a href="#gear">
-                        Gear
-                    </a>
-                </li>
-                <li>
-                    <a href="#contact">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <div>
-                <img src="./image/logo.svg" alt="Zulfahmi Ardiansah">
-                <h1>Zulfahmi<br>Ardiansah</h1>
-                <h2>
-                    Web Developer - UI UX Holic - AI Enthusiast
-                </h2>
-                <h3>
-                    <span id="accent-type">Pinging</span> From <i>Jakarta, Indonesia</i>
-                </h3>
-            </div>
-            <div class="container-scroll">
-                <span>
-                    Scroll To Explore
-                </span>
-                <div class="scroll">
-                    <div></div>
-                </div>
-            </div>
-        </section>
-        <section id="about">
-            <div class="container-introduction" data-aos-duration="500" data-aos-delay="250" data-aos="fade-right">
-                <h2 class="sub-title">
-                    <small>
-                        Introduction
-                    </small>
-                    Who Am I?
-                </h2>
-                <p>
-                    A developer who loves <b>blending code with thoughtful design</b>, passionate about turning concepts into impactful web.
-                </p>
-                <p>
-                    Over the past 7 years, I’ve collaborated on everything from enterprise systems to creative prototypes, always pushing for solutions that <b>balance usability and design</b>.
-                </p>
-            </div>
-            <div class="container-experience" data-aos-duration="500" data-aos-delay="250" data-aos="fade-left">
-                <h2 class="sub-title">
-                    <small>
-                        Experience
-                    </small>
-                    Who I Work For?
-                </h2>
-                <div x-data="{experiences: []}" x-init="experiences = await (await fetch('./data/experiences.json')).json()">
-                    <template x-for="experience in experiences">
-                        <div class="single-experience">
-                            <div>
-                                <i x-text="experience.period"></i>
-                            </div>
-                            <div>
-                                <h3>
-                                    <span x-text="experience.company"></span>
-                                    <span x-text="'(' + experience.region + ')'"></span>
-                                </h3>
-                                <p x-text="experience.role"></p>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </section>
-        <section id="skillset" data-aos-duration="500" data-aos-delay="250" data-aos="fade-up">
-            <h2 class="sub-title">
-                <small>
-                    Skillset
-                </small>
-                What I Can Do For You?
-            </h2>
-            <div class="container-skillset" x-data="{skillsets: []}" x-init="skillsets = await (await fetch('./data/skillsets.json')).json()">
-                <template x-for="skillset in skillsets">
-                    <div class="single-skillset">
-                        <img x-bind:src="'./image/' + skillset.icon + '.svg'" x-bind:alt="initCap(skillset.icon) + ' Skillset'">
-                        <h3 x-text="skillset.title"></h3>
-                        <p>
-                            <i x-text="skillset.description"></i>
-                        </p>
-                        <ul>
-                            <template x-for="skill in skillset.skills">
-                                <li x-text="skill"></li>
-                            </template>
-                        </ul>
-                        <div>
-                            <template x-for="set in skillset.sets">
-                                <img x-bind:src="'./image/' + set + '.svg'" x-bind:alt="initCap(set)">
-                            </template>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </section>
-        <section id="project" x-data="{isProjectsOpened: false, projects: []}" x-init="projects = await (await fetch('./data/projects.json')).json()">
-            <h2 class="sub-title" data-aos-duration="500" data-aos-delay="250" data-aos="fade-up">
-                <small>
-                    Project
-                </small>
-                What I Work On?
-            </h2>
-            <div data-aos-duration="500" data-aos-delay="250" data-aos="fade-up" class="container-project">
-                <template x-for="(project, index) in projects" :key="index">
-                    <div class="single-project" x-bind:class="index > 2 && !isProjectsOpened ? 'hide' : ''">
-                        <h3>
-                            <span x-text="project.title"></span>
-                            <small>
-                                <i x-text="project.related + ' - '"></i><span x-text="project.role"></span>
-                            </small>
-                        </h3>
-                        <div class="container-single-project">
-                            <p x-text="project.description"></p>
-                            <div>
-                                <template x-if="'sets' in project && project.sets.length > 0">
-                                    <span>
-                                        <template x-for="set in project.sets">
-                                            <img x-bind:alt="initCap(set)" x-bind:src="'./image/' + set + '.svg'">
-                                        </template>
-                                    </span>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-            <button x-on:click="isProjectsOpened = !isProjectsOpened" x-bind:class="projects.length > 3 ? '' : 'hide'">
-                <span x-text="isProjectsOpened ? 'Show Less' : 'Show More'"></span> 
-                <svg x-bind:style="isProjectsOpened ? 'transform: rotate(180deg);' : ''" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.2929 0.292893C12.6834 -0.0976311 13.3164 -0.0976311 13.707 0.292893C14.0975 0.683418 14.0975 1.31643 13.707 1.70696L7.70696 7.70696C7.31643 8.09748 6.68342 8.09748 6.29289 7.70696L0.292893 1.70696C-0.0976311 1.31643 -0.0976311 0.683418 0.292893 0.292893C0.683418 -0.0976311 1.31643 -0.0976311 1.70696 0.292893L6.99992 5.58586L12.2929 0.292893Z" fill="white"/>
-                </svg>
-            </button>
-        </section>
-        <section id="blog" data-aos-duration="500" data-aos-delay="250" data-aos="fade-up">
-            <h2 class="sub-title">
-                <small>
-                    Blog
-                </small>
-                What I Think?
-            </h2>
-            <div class="container-blog" x-data="{blogs: []}" x-init="blogs = await (await fetch('./data/blogs.json')).json()">
-                <template x-for="blog in blogs">
-                    <a class="single-blog" x-bind:href="blog.link">
-                        <article>
-                            <div>
-                                <h3 x-text="blog.title"></h3>
-                                <p>
-                                    <i x-text="blog.source"></i>
-                                </p>
-                            </div>
-                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18.75 7.71427C19.4404 7.71427 20 8.28991 20 9C20 9.71009 19.4404 10.2857 18.75 10.2857H1.25C0.559644 10.2857 0 9.71009 0 9C0 8.28991 0.559644 7.71427 1.25 7.71427H18.75Z" fill="white"/>
-                                <path d="M17.8662 8.09095C18.3544 7.58884 19.1456 7.58884 19.6338 8.09095C20.1219 8.59306 20.1219 9.40694 19.6338 9.90905L12.1338 17.6234C11.6456 18.1255 10.8544 18.1255 10.3662 17.6234C9.87806 17.1213 9.87806 16.3074 10.3662 15.8053L17.8662 8.09095Z" fill="white"/>
-                                <path d="M10.3662 0.376581C10.8544 -0.125527 11.6456 -0.125527 12.1338 0.376581L19.6338 8.09095C20.1219 8.59306 20.1219 9.40694 19.6338 9.90905C19.1456 10.4112 18.3544 10.4112 17.8662 9.90905L10.3662 2.19468C9.87806 1.69257 9.87806 0.878689 10.3662 0.376581Z" fill="white"/>
-                            </svg>
-                        </article>
-                    </a>
-                </template>
-            </div>
-        </section>
-        <section id="gear">
-            <h2 class="sub-title" data-aos-duration="500" data-aos-delay="250" data-aos="fade-up">
-                <small>
-                    Gear
-                </small>
-                What I Use?
-            </h2>
-            <div class="container-gear">
-                <div data-aos-duration="500" data-aos-delay="500" data-aos="fade-right">
-                    <h3>
-                        Hardware
-                    </h3>
-                    <ul>
-                        <li>
-                            <b>Lenovo ThinkBook 14 G6</b> - <i>AMD Ryzen 5 7530U, Radeon Graphics, 32GB RAM, 768GB SSD storage</i>
-                        </li>
-                        <li>
-                            <b>Lenovo Thinkpad T470s</b> - <i>Intel Core i5 7300U, Intel HD Graphic, 16GB RAM, 512GB SSD Storage</i>
-                        </li>
-                        <li>
-                            <b>Lenovo ThinkPad Morfkho</b> - <i>Mousse</i>
-                        </li>
-                        <li>
-                            <b>Kinera Wyvern with XINHS Dusk 4</b> - <i>In Ear Monitor</i>
-                        </li>
-                    </ul>
-                </div>
-                <div data-aos-duration="500" data-aos-delay="500" data-aos="fade-left">
-                    <h3>
-                        Software
-                    </h3>
-                    <ul>
-                        <li>
-                            <b>Visual Studio Code</b> - <i>Main Code Editor</i>
-                        </li>
-                        <li>
-                            <b>Eclipse Based Spring Tool Suite</b> - <i>Java Code Editor</i>
-                        </li>
-                        <li>
-                            <b>DBeaver</b> - <i>Database Manager</i>
-                        </li>
-                        <li>
-                            <b>Claude Code</b> - <i>Code Agent</i>
-                        </li>
-                        <li>
-                            <b>Gemini</b> - <i>AI Assistant</i>
-                        </li>
-                        <li>
-                            <b>Figma</b> - <i>UI and Vector Design Tool</i>
-                        </li>
-                        <li>
-                            <b>Docker</b> - <i>Application Containerization</i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <section id="contact" data-aos-duration="500" data-aos-delay="250" data-aos="fade-up">
-            <h2 class="sub-title">
-                <small>
-                    Contact
-                </small>
-                Where Am I?
-            </h2>
-            <p>
-                I'm eager to hear from you! Let's build something great together.
-            </p>
-            <div class="container-contact">
-                <a target="_blank" href="https://www.linkedin.com/in/zulfahmi-ardiansah/">
-                    <img src="./image/linkedin.svg" alt="LinkedIn">
-                </a>
-                <a target="_blank" href="https://www.instagram.com/xxdev.id/">
-                    <img src="./image/instagram.svg" alt="Instagram">
-                </a>
-                <a target="_blank" href="https://github.com/zulfahmi-ardiansah">
-                    <img src="./image/github.svg" alt="Github">
-                </a>
-                <a target="_blank" href="https://dribbble.com/xxdev_id">
-                    <img src="./image/dribbble.svg" alt="Dribble">
-                </a>
-                <a target="_blank" href="https://wa.me/+628968665747">
-                    <img src="./image/whatsapp.svg" alt="WhatsApp">
-                </a>
-                <a target="_blank" href="mailto:zulfahmiardiansah.26@gmail.com">
-                    <img src="./image/email.svg" alt="Email">
-                </a>
-            </div>
-        </section>
-    </main>
-    <div id="accent-preloader">
-        <span>
-            Zulfahmi Ardiansah
-        </span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Zulfahmi Ardiansah, back to top"><img src="./image/logo.svg" alt="" width="30" height="30"><span>ZA.</span></a>
+      <nav class="site-nav" aria-label="Main navigation"><a href="#about">About</a><a href="#skillset">Practice</a><a href="#project">Work</a><a href="#blog">Notes</a><a href="#gear">Setup</a><a href="#contact">Contact</a></nav>
+      <nav class="header-socials" aria-label="Social media"><a class="social-icon social-icon--github" href="https://github.com/zulfahmi-ardiansah" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a><a class="social-icon social-icon--linkedin" href="https://www.linkedin.com/in/zulfahmi-ardiansah/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a><a class="social-icon social-icon--instagram" href="https://www.instagram.com/xxdev.id/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></nav>
+      <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">Menu <span class="menu-icon" aria-hidden="true"><span></span><span></span></span></button>
     </div>
-    <footer>
-        <div>
-            <p>
-                © 2025 - Xxdev.id</small>
-            </p>
-        </div>
-        <div>
-            <p>
-                Thanks for visiting, here's a <a target="_blank" href="https://open.spotify.com/playlist/42ulkzguOXIDeDpIswWywa?si=Okl8z5w1SR2N158IqCd80w"><b>playlist</b></a> for you :)
-            </p>
-        </div>
-    </footer>
-    <div id="accent-grain"></div>
-    <img id="accent-logo" alt="Accent" src="./image/accent-logo.svg">
+    <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  </header>
+  <dialog id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+    <div class="mobile-menu-head"><span>Navigate / ZA.</span><button class="menu-close" type="button" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div>
+    <nav aria-label="Mobile navigation"><a href="#about"><span>01</span> About</a><a href="#skillset"><span>02</span> Practice</a><a href="#project"><span>03</span> Work</a><a href="#blog"><span>04</span> Notes</a><a href="#gear"><span>05</span> Setup</a><a href="#contact"><span>06</span> Contact</a></nav>
+    <div class="mobile-menu-socials" aria-label="Social media"><a class="social-icon social-icon--github" href="https://github.com/zulfahmi-ardiansah" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a><a class="social-icon social-icon--linkedin" href="https://www.linkedin.com/in/zulfahmi-ardiansah/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a><a class="social-icon social-icon--instagram" href="https://www.instagram.com/xxdev.id/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></div>
+    <a class="mobile-menu-email" href="mailto:zulfahmiardiansah.26@gmail.com">zulfahmiardiansah.26@gmail.com <span aria-hidden="true">↗</span></a>
+  </dialog>
+  <main id="main">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-center">
+        <img class="hero-logo" src="./image/logo.svg" alt="" width="120" height="100">
+        <h1 id="hero-title">Zulfahmi<br>Ardiansah</h1>
+        <p class="hero-role">Web Developer <span>-</span> UI UX Holic <span>-</span> AI Enthusiast</p>
+        <p class="hero-place"><span id="accent-type">Pinging</span> From <strong>Jakarta, Indonesia</strong></p>
+        <a class="hero-work-link" href="#project">Explore selected work <span aria-hidden="true">↗</span></a>
+      </div>
+      <a class="scroll-cue" href="#about"><span>Scroll to explore</span><span class="scroll-track" aria-hidden="true"><span></span></span></a>
+    </section>
+    <section id="about" class="section wrap" aria-labelledby="about-title">
+      <div class="section-heading"><p class="eyebrow">01 / Introduction</p><h2 id="about-title">The person<br>behind the work<span class="period">.</span></h2></div>
+      <div class="about-grid">
+        <div class="about-copy"><p class="large-copy">I love blending code with thoughtful design.</p><p>I'm a developer who enjoys turning concepts into web experiences. I care about the code behind a product as much as the way people use it.</p><p>Over the past 7 years, I've collaborated on everything from enterprise systems to creative prototypes. In each project, I look for a balance between usability and design.</p><a class="text-link" href="#project">See the work <span aria-hidden="true">↗</span></a></div>
+        <aside class="about-side"><p class="side-kicker">Experience</p><h3 class="aside-title">Development work in Indonesia &amp; Japan<span class="period">.</span></h3><div class="experience"><p class="experience-label">Where I've worked</p><div id="experience-list" class="experience-list" aria-live="polite"><p class="data-status">Loading experience…</p></div></div></aside>
+      </div>
+    </section>
+    <section id="skillset" class="section wrap" aria-labelledby="skillset-title"><div class="section-heading heading-split"><div><p class="eyebrow">02 / Practice</p><h2 id="skillset-title">What I can do<span class="period">.</span></h2></div><p>Three disciplines, one way of working: understand the problem, build the right system, and give people a clear way through it.</p></div><div id="skillset-list" class="skill-grid" aria-live="polite"><p class="data-status">Loading skillsets…</p></div></section>
+    <section id="project" class="section project-section" aria-labelledby="project-title"><div class="wrap"><div class="section-heading heading-split"><div><p class="eyebrow">03 / Work</p><h2 id="project-title">Selected<br>projects<span class="period">.</span></h2></div><p>Different industries bring different constraints. Choose a project to see the role, the system, and the tools behind it.</p></div><div class="project-shell"><div id="project-list" class="project-list" aria-label="Choose a project"><p class="data-status">Loading projects…</p></div><div id="project-feature" class="project-feature" aria-live="polite"><p class="data-status">Loading project details…</p></div></div><div class="project-footer"><p id="project-result" aria-live="polite"></p><div class="project-controls"><button id="project-prev" type="button" aria-label="Previous project" disabled><span class="control-arrow" aria-hidden="true">←</span><span class="control-label">Previous</span></button><button id="project-next" type="button" aria-label="Next project" disabled><span class="control-label">Next</span><span class="control-arrow" aria-hidden="true">→</span></button></div></div></div></section>
+    <section id="blog" class="section wrap" aria-labelledby="blog-title"><div class="section-heading heading-split"><div><p class="eyebrow">04 / Notes</p><h2 id="blog-title">Things worth<br>thinking about<span class="period">.</span></h2></div><p>I write about the questions that come up while learning and making: programming, AI, and the way people read a screen.</p></div><div id="blog-list" class="blog-list" aria-live="polite"><p class="data-status">Loading writing…</p></div></section>
+    <section id="gear" class="section wrap" aria-labelledby="gear-title"><div class="section-heading heading-split"><div><p class="eyebrow">05 / The workbench</p><h2 id="gear-title">What I work with<span class="period">.</span></h2></div><p>A practical mix of machines and software for building, checking, and shaping digital work.</p></div><div class="gear-grid">
+      <div class="gear-column"><h3>Hardware</h3><ul><li><strong>Lenovo ThinkBook 14 G6</strong><span>AMD Ryzen 5 7530U · 32GB RAM · 768GB SSD</span></li><li><strong>Lenovo ThinkPad T470s</strong><span>Intel Core i5 7300U · 16GB RAM · 512GB SSD</span></li><li><strong>Lenovo ThinkPad Morfkho</strong><span>Mouse</span></li><li><strong>Kinera Wyvern with XINHS Dusk 4</strong><span>In-ear monitor</span></li></ul></div>
+      <div class="gear-column"><h3>Software</h3><ul><li><strong>Visual Studio Code</strong><span>Main code editor</span></li><li><strong>Spring Tool Suite</strong><span>Java development</span></li><li><strong>DBeaver</strong><span>Database management</span></li><li><strong>Claude Code & Gemini</strong><span>Code agent and AI assistant</span></li><li><strong>Figma</strong><span>Interface and vector design</span></li><li><strong>Docker</strong><span>Application containers</span></li></ul></div>
+    </div></section>
+    <section id="contact" class="section contact-section" aria-labelledby="contact-title"><div class="wrap contact-inner"><p class="eyebrow">06 / Get in touch</p><h2 id="contact-title">Let's make<br>it clearer<span class="period">.</span></h2><div class="contact-bottom"><p>Building a new product or untangling an existing workflow? Tell me what needs to work better.</p><a class="contact-email" href="mailto:zulfahmiardiansah.26@gmail.com">zulfahmiardiansah.26@gmail.com <span aria-hidden="true">↗</span></a></div><div class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/zulfahmi-ardiansah/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/zulfahmi-ardiansah" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.instagram.com/xxdev.id/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://dribbble.com/xxdev_id" target="_blank" rel="noopener noreferrer">Dribbble</a><a href="https://wa.me/+628968665747" target="_blank" rel="noopener noreferrer">WhatsApp</a></div></div></section>
+  </main>
+  <footer class="site-footer wrap"><span>© <span id="year">2026</span> Zulfahmi Ardiansah</span><span>Made in Jakarta, Indonesia · <a href="https://open.spotify.com/playlist/42ulkzguOXIDeDpIswWywa?si=Okl8z5w1SR2N158IqCd80w" target="_blank" rel="noopener noreferrer">A playlist for you ↗</a></span><a href="#home">Back to top ↑</a></footer>
 </body>
 </html>

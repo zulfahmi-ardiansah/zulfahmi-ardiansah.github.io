@@ -1,54 +1,72 @@
 [
     {
         "title": "Doi Masaru Catering System (JP)",
+        "client": "Doi Masaru",
         "role": "Back-End Developer",
         "related": "Freelancer",
-        "description": "A system to manage catering business, starting from the supply and customer purchase, delivery, item inventory, and invoicing.",
+        "domain": "Catering operations",
+        "scope": ["Supply", "Purchasing", "Delivery", "Inventory", "Invoicing"],
+        "description": "Catering work moves through several connected steps: supply, customer orders, delivery, inventory, and invoicing. This system brings those steps together so the business can manage the full flow in one place.",
         "sets": [
             "java", "spring", "postgre"
         ]
     },
     {
         "title": "JA Hakui Attendance System (JP)",
+        "client": "JA Hakui",
         "role": "Back-End Developer",
         "related": "Freelancer",
-        "description": "A system to manage employee attendance, starting from the daily attendance process, leave permits, to calculating the payroll.",
+        "domain": "Workforce operations",
+        "scope": ["Daily attendance", "Leave permits", "Payroll"],
+        "description": "A workforce system covering daily attendance, leave permits, and payroll calculation. The challenge is keeping those related records connected as people move through each stage of the process.",
         "sets": [
             "java", "spring", "postgre"
         ]
     },
     {
         "title": "SIKELABANG Balai Pemasyarakatan Kelas II Serang",
+        "client": "Balai Pemasyarakatan Kelas II Serang",
         "role": "Web Developer",
         "related": "Freelancer",
-        "description": "OSPS (One Stop Public Service) which can make it easier for the community to get services.",
+        "domain": "Public services",
+        "scope": ["One Stop Public Service"],
+        "description": "A One Stop Public Service experience for Balai Pemasyarakatan Kelas II Serang. It gives the community a clearer digital route to available services.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
     },
     {
         "title": "ACM Company Profile",
+        "client": "ACM",
         "role": "Web Developer",
         "related": "Freelancer",
-        "description": "A website that provides company information, membership details, industry blog posts, and an integrated certification verification page.",
+        "domain": "Membership and information",
+        "scope": ["Company information", "Membership", "Industry blog", "Certification verification"],
+        "description": "A company website with several jobs to do: explain the organization, present membership information, publish industry articles, and support certification verification. Each path needs to be easy to find for a different visitor.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
     },
     {
         "title": "Tukeran.com",
+        "client": "Tukeran.com",
         "role": "Web Developer",
         "related": "Freelancer",
-        "description": "A pioneering startup in Indonesia that innovates by combining traditional bartering culture with digital culture.",
+        "domain": "Digital bartering",
+        "scope": ["Traditional bartering", "Digital culture"],
+        "description": "An Indonesian startup bringing traditional bartering into a digital setting. The web experience gives an old exchange idea a place in a modern product.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
     },
     {
         "title": "Sobat Siswa",
+        "client": "Sobat Siswa",
         "role": "Web Developer",
         "related": "Freelancer",
-        "description": "An academic information system that facilitate learning activities, student coaching, and communication between parents and the school.",
+        "domain": "Education",
+        "scope": ["Learning", "Student coaching", "Parent-school communication"],
+        "description": "An academic information system connecting learning activities, student coaching, and communication between parents and school. It supports the different people involved in a student's daily education.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
