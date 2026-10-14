@@ -240,6 +240,8 @@ html.motion-ready #project-feature { translate: none; transition-property: opaci
   .section-heading { margin-bottom: 34px; }
   .heading-split { display: block; }
   .heading-split > p { margin: 22px 0 0; font-size: 14px; text-align: left; }
+  #project-title { font-size: clamp(27px,8.5vw,48px); white-space: nowrap; }
+  #project-title br { display: none; }
   .skill-grid { grid-template-columns: 1fr; }
   .skill-card { padding: 28px; }
   .skill-card h3 { margin-top: 28px; }

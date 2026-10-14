@@ -118,6 +118,18 @@ function renderBlog(item, index) {
   return link;
 }
 
+function renderSetupColumn(group) {
+  const column = element('div', 'gear-column');
+  const items = element('ul');
+  (group.items || []).forEach(item => {
+    const row = element('li');
+    row.append(element('strong', '', item.name), element('span', '', item.description));
+    items.append(row);
+  });
+  column.append(element('h3', '', group.category), items);
+  return column;
+}
+
 function initMenu() {
   const button = document.querySelector('.menu-toggle');
   const dialog = document.getElementById('mobile-menu');
@@ -322,7 +334,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadData('projects', 'project-list', renderProjectChoice),
     loadData('experiences', 'experience-list', renderExperience),
     loadData('skillsets', 'skillset-list', renderSkill),
-    loadData('blogs', 'blog-list', renderBlog)
+    loadData('blogs', 'blog-list', renderBlog),
+    loadData('setup', 'setup-list', renderSetupColumn)
   ]);
   initProjects(projects);
   observeReveals();

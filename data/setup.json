@@ -1,0 +1,21 @@
+[
+  {
+    "category": "Hardware",
+    "items": [
+      { "name": "Lenovo ThinkBook 14 G6", "description": "AMD Ryzen 5 7530U" },
+      { "name": "Lenovo ThinkPad T470s", "description": "Intel Core i5 7300U" },
+      { "name": "Lenovo ThinkPad Morfkho", "description": "Mouse" },
+      { "name": "Kinera Wyvern with XINHS Dusk 4", "description": "In-ear monitor" }
+    ]
+  },
+  {
+    "category": "Software",
+    "items": [
+      { "name": "Visual Studio Code", "description": "Main Code Editor" },
+      { "name": "Spring Tool Suite", "description": "Java IDE" },
+      { "name": "DBeaver", "description": "Database Manager" },
+      { "name": "Claude Code, Codex, & Gemini", "description": "Code Agent" },
+      { "name": "Figma", "description": "Interface and Vector design" }
+    ]
+  }
+]
