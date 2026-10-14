@@ -1,72 +1,144 @@
 [
     {
-        "title": "Doi Masaru Catering System (JP)",
-        "client": "Doi Masaru",
+        "title": "Hygiene Inspection System",
+        "client": "Doi Masaru (JP)",
         "role": "Back-End Developer",
         "related": "Freelancer",
-        "domain": "Catering operations",
-        "scope": ["Supply", "Purchasing", "Delivery", "Inventory", "Invoicing"],
-        "description": "Catering work moves through several connected steps: supply, customer orders, delivery, inventory, and invoicing. This system brings those steps together so the business can manage the full flow in one place.",
+        "domain": "Food safety & hygiene",
+        "scope": [
+            "Raw Material Receiving Inspection",
+            "Storage & Temperature Monitoring",
+            "Heating & Cooling Verification",
+            "Packaging & Dispatch Control",
+            "Final Delivery Quality Assurance"
+        ],
+        "description": "An end-to-end quality assurance system for commercial catering, tracking food hygiene standards across every milestone, from ingredient receiving and temperature-regulated storage to packaging and delivery. Along with developing the backend, I translated business requirements into technical tasks for frontend developers and coordinated delivery schedules.",
         "sets": [
             "java", "spring", "postgre"
         ]
     },
     {
-        "title": "JA Hakui Attendance System (JP)",
-        "client": "JA Hakui",
+        "title": "Catering Management System",
+        "client": "Doi Masaru (JP)",
         "role": "Back-End Developer",
         "related": "Freelancer",
-        "domain": "Workforce operations",
-        "scope": ["Daily attendance", "Leave permits", "Payroll"],
-        "description": "A workforce system covering daily attendance, leave permits, and payroll calculation. The challenge is keeping those related records connected as people move through each stage of the process.",
+        "domain": "Catering operations & logistics",
+        "scope": [
+            "Supplier Procurement & Vendor Settlements",
+            "Cost-Optimized Inventory Bundling",
+            "Multi-Tier Customer Order Management",
+            "Daily Delivery Route Dispatch",
+            "Invoicing & Payment Processing"
+        ],
+        "description": "A full-lifecycle catering management platform covering supplier procurement, inventory control, and multi-tier customer orders (daily menus, individual packages, and custom requests). It incorporates a cost-optimization algorithm for menu item bundling and automates daily dispatch and invoicing. I also coordinated frontend execution alongside backend engineering.",
         "sets": [
             "java", "spring", "postgre"
         ]
     },
     {
-        "title": "SIKELABANG",
+        "title": "Attendance System",
+        "client": "JA Hakui (JP)",
+        "role": "Back-End Developer",
+        "related": "Freelancer",
+        "domain": "Workforce management",
+        "scope": [
+            "Shift & Daily Attendance Tracking",
+            "Overtime & Leave Calculations",
+            "Actual Labor Hours Computation",
+            "Payroll Data Integration Export",
+            "Workforce Attendance Reporting"
+        ],
+        "description": "A workforce attendance system accommodating complex working scenarios, including automated overtime calculation, leave approvals, and actual labor hour computations. The verified attendance records integrate as core input for an external payroll system. I developed the backend services and assisted in coordinating change requests with the frontend team.",
+        "sets": [
+            "java", "spring", "postgre"
+        ]
+    },
+    {
+        "title": "Rehabilitation Management System",
         "client": "Balai Pemasyarakatan Kelas II Serang",
-        "role": "Web Developer",
+        "role": "Full Stack Developer",
         "related": "Freelancer",
-        "domain": "Public services",
-        "scope": ["One Stop Public Service"],
-        "description": "A One Stop Public Service experience for Balai Pemasyarakatan Kelas II Serang. It gives the community a clearer digital route to available services.",
+        "domain": "Public sector administration",
+        "scope": [
+            "Rehabilitation Program Administration",
+            "Hierarchical Approval Workflows",
+            "Automated Official Document Generation",
+            "Digital Signature Verification",
+            "Client & Officer Progress Monitoring"
+        ],
+        "description": "Known as SIKELABANG, this administrative platform manages correctional client rehabilitation programs, transitioning traditional manual paper routines into a unified digital workflow. Features hierarchical approval tiers, automated document generation, verifiable digital signatures, and transparent progress tracking accessible to both probation officers and correctional clients.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
     },
     {
-        "title": "ACM Company Profile",
-        "client": "ACM",
-        "role": "Web Developer",
+        "title": "Tour Management System",
+        "client": "Indonesia MotoTour",
+        "role": "Full Stack Developer",
         "related": "Freelancer",
-        "domain": "Membership and information",
-        "scope": ["Company information", "Membership", "Industry blog", "Certification verification"],
-        "description": "A company website with several jobs to do: explain the organization, present membership information, publish industry articles, and support certification verification. Each path needs to be easy to find for a different visitor.",
+        "domain": "Tourism & travel booking",
+        "scope": [
+            "Nationwide Tour Catalog & Itineraries",
+            "Online Traveler Registration",
+            "Automated Payment Gateway Integration",
+            "Booking & Reservation Management",
+            "Tour Participant Scheduling"
+        ],
+        "description": "A travel booking platform connecting motorcycle touring enthusiasts with cross-Indonesia excursion packages. The platform provides detailed trip itineraries, seamless online registration, and automated payment gateway processing for instant booking confirmations.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
     },
     {
-        "title": "Tukeran.com",
+        "title": "Digital Bartering Platform",
         "client": "Tukeran.com",
-        "role": "Web Developer",
+        "role": "Full Stack Developer",
         "related": "Freelancer",
         "domain": "Digital bartering",
-        "scope": ["Traditional bartering", "Digital culture"],
-        "description": "An Indonesian startup bringing traditional bartering into a digital setting. The web experience gives an old exchange idea a place in a modern product.",
+        "scope": [
+            "User Account & Profile Management",
+            "Item Cataloging & Condition Grading",
+            "Peer-to-Peer Barter Proposal Matching",
+            "Direct Trade Offer Negotiation",
+            "Exchange Transaction Status Tracking"
+        ],
+        "description": "A peer-to-peer bartering marketplace that brings traditional trade exchange into a modern e-commerce experience. Users list items with condition ratings, explore other listings, and initiate direct trade proposals to exchange goods without monetary transactions.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
     },
     {
-        "title": "Sobat Siswa",
-        "client": "Sobat Siswa",
-        "role": "Web Developer",
+        "title": "Corporate Website",
+        "client": "AIA Training",
+        "role": "Full Stack Developer",
         "related": "Freelancer",
-        "domain": "Education",
-        "scope": ["Learning", "Student coaching", "Parent-school communication"],
-        "description": "An academic information system connecting learning activities, student coaching, and communication between parents and school. It supports the different people involved in a student's daily education.",
+        "domain": "Corporate training & certification",
+        "scope": [
+            "ISO Course & Syllabus Directory",
+            "Lead Auditor Training Registration",
+            "Corporate Training Inquiries",
+            "Participant Certificate Verification",
+            "Training Schedule Management"
+        ],
+        "description": "The official digital platform for Accredited International Academy (AIA Training), delivering certified ISO Lead Auditor programs and corporate management training across Indonesia. The website features comprehensive course directories, syllabus breakdowns, registration inquiry workflows, and an online certification verification system.",
+        "sets": [
+            "php", "laravel", "mysql", "javascript", "bootstrap"
+        ]
+    },
+    {
+        "title": "Corporate Website",
+        "client": "VRC International",
+        "role": "Full Stack Developer",
+        "related": "Freelancer",
+        "domain": "Corporate & ISO certification",
+        "scope": [
+            "ISO Certification Standards Catalog",
+            "Online Certificate Authenticity Verification",
+            "Real-Time Certification Status Lookup",
+            "Audit Application & Quotation Inquiries",
+            "Surveillance & Recertification Guidance"
+        ],
+        "description": "Official company website for PT. Valuabilitas Reabilitas Certi (VRC International), an accredited ISO management system certification body. Includes structured ISO standards guides, responsive UI with dark/light themes, inquiry workflows, and real-time certificate validity verification.",
         "sets": [
             "php", "laravel", "mysql", "javascript", "bootstrap"
         ]
