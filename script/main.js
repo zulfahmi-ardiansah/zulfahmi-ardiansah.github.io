@@ -297,31 +297,35 @@ function initScrollEffects() {
 
 function initPageMotion() {
   const progress = document.getElementById('reading-progress');
+  const sections = [...document.querySelectorAll('main section[id]')];
+  const navLinks = [...document.querySelectorAll('.site-nav a, .mobile-menu nav a')];
+  let activeSectionId = '';
   let ticking = false;
   function updateProgress() {
     const available = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = `${available > 0 ? Math.min(100, window.scrollY / available * 100) : 0}%`;
     document.querySelector('.site-header').classList.toggle('is-scrolled', window.scrollY > 20);
+    const marker = window.innerHeight * .35;
+    let currentSectionId = '';
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top > marker) break;
+      currentSectionId = section.id;
+    }
+    if (currentSectionId !== activeSectionId) {
+      navLinks.forEach(link => {
+        if (link.hash === `#${currentSectionId}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      activeSectionId = currentSectionId;
+    }
     ticking = false;
   }
-  window.addEventListener('scroll', () => {
+  function queueUpdate() {
     if (!ticking) { window.requestAnimationFrame(updateProgress); ticking = true; }
-  }, { passive: true });
-  updateProgress();
-
-  const sections = document.querySelectorAll('main section[id]');
-  if ('IntersectionObserver' in window) {
-    const navObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        document.querySelectorAll('.site-nav a, .mobile-menu nav a').forEach(link => {
-          if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-          else link.removeAttribute('aria-current');
-        });
-      });
-    }, { rootMargin: '-25% 0px -65% 0px' });
-    sections.forEach(section => navObserver.observe(section));
   }
+  window.addEventListener('scroll', queueUpdate, { passive: true });
+  window.addEventListener('resize', queueUpdate);
+  updateProgress();
 
   return initScrollEffects();
 }
