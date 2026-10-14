@@ -154,22 +154,33 @@ function initProjects(projects) {
   }
 
   let selected = 0;
+  let hasRendered = false;
+  let featureAnimation;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   function select(index, moveFocus = false, revealOnMobile = false) {
-    selected = (index + projects.length) % projects.length;
+    const nextIndex = (index + projects.length) % projects.length;
+    if (hasRendered && nextIndex === selected) return;
+    selected = nextIndex;
     choices.forEach((choice, position) => choice.setAttribute('aria-pressed', String(position === selected)));
+    const animatePanel = hasRendered && feature.classList.contains('is-revealed') && !reducedMotion.matches && (featureAnimation || Number(getComputedStyle(feature).opacity) > .98);
+    featureAnimation?.cancel();
     feature.replaceChildren(renderProjectFeature(projects[selected], selected, projects.length));
     result.textContent = `Project ${selected + 1} of ${projects.length}`;
     if (moveFocus) choices[selected].focus();
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      feature.firstElementChild.animate(
-        [{ opacity: .45, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
-        { duration: 280, easing: 'ease-out' }
+    if (animatePanel) {
+      featureAnimation = feature.animate(
+        [{ opacity: 0, filter: 'blur(10px)' }, { opacity: 1, filter: 'blur(0)' }],
+        { duration: 900, easing: 'cubic-bezier(.18,.65,.25,1)' }
       );
     }
+    hasRendered = true;
     if (revealOnMobile && window.matchMedia('(max-width: 760px)').matches) {
-      feature.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+      feature.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'nearest' });
     }
   }
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) featureAnimation?.cancel();
+  });
   choices.forEach((choice, index) => {
     choice.addEventListener('click', () => select(index, false, true));
     choice.addEventListener('keydown', event => {
@@ -184,6 +195,92 @@ function initProjects(projects) {
   previous.addEventListener('click', () => select(selected - 1, false, true));
   next.addEventListener('click', () => select(selected + 1, false, true));
   select(0);
+}
+
+function initScrollEffects() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const smallScreen = window.matchMedia('(max-width: 760px)');
+  const hero = document.querySelector('.hero');
+  const layers = [
+    [document.querySelector('.hero-kicker'), 32],
+    [document.querySelector('.hero h1'), 82],
+    [document.querySelector('.hero-intro'), 46],
+    ...[...document.querySelectorAll('.section-heading h2')].map(node => [node, 42]),
+    ...[...document.querySelectorAll('.heading-split > p')].map(node => [node, 24]),
+    [document.querySelector('.contact-inner h2'), 54]
+  ].filter(([node]) => node);
+  layers.forEach(([node]) => node.classList.add('scroll-depth'));
+
+  let depthFrame = 0;
+  function paintDepth() {
+    depthFrame = 0;
+    if (reducedMotion.matches) return;
+    const viewportHeight = window.innerHeight;
+    const scale = smallScreen.matches ? .35 : 1;
+    const sectionRects = new Map();
+    const offsets = layers.map(([node, distance]) => {
+      const section = node.closest('section');
+      if (!sectionRects.has(section)) sectionRects.set(section, section.getBoundingClientRect());
+      const rect = sectionRects.get(section);
+      const progress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
+      return [node, Math.round((progress - .5) * distance * scale)];
+    });
+    offsets.forEach(([node, offset]) => node.style.setProperty('--scroll-offset', `${offset}px`));
+    const heroTravel = Math.max(0, Math.min(window.scrollY, hero.offsetHeight));
+    hero.style.setProperty('--hero-glow-shift', `${Math.round(heroTravel * (smallScreen.matches ? .05 : .14))}px`);
+  }
+  function queueDepth() {
+    if (!depthFrame && !reducedMotion.matches) depthFrame = window.requestAnimationFrame(paintDepth);
+  }
+  function resetDepth() {
+    if (depthFrame) window.cancelAnimationFrame(depthFrame);
+    depthFrame = 0;
+    layers.forEach(([node]) => node.style.removeProperty('--scroll-offset'));
+    hero.style.removeProperty('--hero-glow-shift');
+  }
+
+  const revealSelector = '.section-heading, .about-copy, .about-side, .skill-card, .project-feature, .blog-item, .gear-column, .contact-bottom';
+  let revealObserver;
+  function observeReveals() {
+    if (reducedMotion.matches || !document.documentElement.classList.contains('motion-ready')) return;
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-revealed');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    }
+    document.querySelectorAll(revealSelector).forEach(node => {
+      if (!node.classList.contains('is-revealed')) revealObserver.observe(node);
+    });
+  }
+
+  window.addEventListener('scroll', queueDepth, { passive: true });
+  window.addEventListener('resize', queueDepth);
+  smallScreen.addEventListener('change', queueDepth);
+  document.addEventListener('focusin', event => {
+    const target = event.target.closest(revealSelector);
+    if (!target) return;
+    target.classList.add('is-revealed');
+    revealObserver?.unobserve(target);
+  });
+  reducedMotion.addEventListener('change', () => {
+    if (reducedMotion.matches) {
+      revealObserver?.disconnect();
+      document.documentElement.classList.remove('motion-ready');
+      resetDepth();
+    } else {
+      document.documentElement.classList.add('motion-ready');
+      observeReveals();
+      queueDepth();
+    }
+  });
+  window.clearTimeout(window.portfolioRevealFallback);
+  observeReveals();
+  queueDepth();
+  return observeReveals;
 }
 
 function initPageMotion() {
@@ -214,24 +311,13 @@ function initPageMotion() {
     sections.forEach(section => navObserver.observe(section));
   }
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) return;
-  const reveal = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.animate(
-        [{ opacity: .5, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }],
-        { duration: 500, easing: 'cubic-bezier(.2,.7,.2,1)' }
-      );
-      reveal.unobserve(entry.target);
-    });
-  }, { threshold: .13 });
-  document.querySelectorAll('.section-heading, .skill-card, .blog-item, .about-copy, .about-side').forEach(node => reveal.observe(node));
+  return initScrollEffects();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('year').textContent = new Date().getFullYear();
   initMenu();
+  const observeReveals = initPageMotion();
   const [projects] = await Promise.all([
     loadData('projects', 'project-list', renderProjectChoice),
     loadData('experiences', 'experience-list', renderExperience),
@@ -239,5 +325,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadData('blogs', 'blog-list', renderBlog)
   ]);
   initProjects(projects);
-  initPageMotion();
+  observeReveals();
 });
