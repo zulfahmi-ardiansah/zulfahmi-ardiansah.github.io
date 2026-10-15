@@ -44,6 +44,16 @@ function renderExperience(item) {
   return row;
 }
 
+function updateExperienceYears(periods) {
+  const currentYear = new Date().getFullYear();
+  const years = periods
+    .map(period => Number(String(period).match(/^\s*(\d{4})\b/)?.[1]))
+    .filter(year => Number.isInteger(year) && year <= currentYear);
+  if (years.length) {
+    document.getElementById('experience-years').textContent = currentYear - Math.min(...years);
+  }
+}
+
 function renderSkill(item, index) {
   const card = element('article', 'skill-card');
   card.id = `skill-${item.title.toLowerCase()}`;
@@ -393,11 +403,12 @@ initPreloader();
 
 document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('year').textContent = new Date().getFullYear();
+  updateExperienceYears([...document.querySelectorAll('#experience-list .experience-period')].map(node => node.textContent));
   initMenu();
   const observeReveals = initPageMotion();
   const [projects] = await Promise.all([
     loadData('projects', 'project-list', renderProjectChoice),
-    loadData('experiences', 'experience-list', renderExperience),
+    loadData('experiences', 'experience-list', renderExperience).then(rows => updateExperienceYears(rows.map(row => row.period))),
     loadData('skillsets', 'skillset-list', renderSkill),
     loadData('tools', 'tools-list', renderTool),
     loadData('blogs', 'blog-list', renderBlog),

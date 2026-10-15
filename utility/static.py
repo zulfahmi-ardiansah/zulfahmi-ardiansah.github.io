@@ -1,8 +1,9 @@
 """Refresh the crawlable HTML snapshots from the portfolio JSON files."""
 
+import json
+import re
 from datetime import date
 from html import escape
-import json
 from pathlib import Path
 
 
@@ -25,6 +26,18 @@ def render_experience(items):
         f'<p>{safe(item["role"])}</p></div></article>'
         for item in items
     )
+
+
+def experience_years(items):
+    start_years = []
+    for item in items:
+        match = re.match(r"\s*(\d{4})\b", item["period"])
+        if not match:
+            raise ValueError(f'Experience period must start with a year: {item["period"]}')
+        start_years.append(int(match.group(1)))
+    if not start_years:
+        raise ValueError("At least one work experience is required to calculate years")
+    return date.today().year - min(start_years)
 
 
 def render_certifications(items):
@@ -105,10 +118,19 @@ def replace_block(source, name, content):
     return source[:start] + "\n" + body + "\n" + indent + source[end:]
 
 
+def replace_inline(source, name, content):
+    start_marker = f"<!-- static:{name}:start -->"
+    end_marker = f"<!-- static:{name}:end -->"
+    start = source.index(start_marker) + len(start_marker)
+    end = source.index(end_marker, start)
+    return source[:start] + str(content) + source[end:]
+
+
 def main():
     source = INDEX.read_text(encoding="utf-8")
+    experiences = rows("experiences")
     blocks = {
-        "experience": render_experience(rows("experiences")),
+        "experience": render_experience(experiences),
         "certifications": render_certifications(rows("certifications")),
         "skillset": render_skillset(rows("skillsets")),
         "tools": render_tools(rows("tools")),
@@ -117,6 +139,7 @@ def main():
     }
     for name, content in blocks.items():
         source = replace_block(source, name, content)
+    source = replace_inline(source, "experience-years", experience_years(experiences))
     INDEX.write_text(source, encoding="utf-8")
 
 
