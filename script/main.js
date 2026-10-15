@@ -330,6 +330,51 @@ function initPageMotion() {
   return initScrollEffects();
 }
 
+function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  const pageContent = [...document.body.children].filter(element => element !== preloader);
+  const inertBeforeLoading = pageContent.map(element => element.inert);
+  pageContent.forEach(element => { element.inert = true; });
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const minimum = reducedMotion ? 400 : 2200;
+  let exiting = false;
+  let waiting = false;
+  window.clearTimeout(window.preloaderFallback);
+
+  function exitPreloader() {
+    if (exiting) return;
+    exiting = true;
+    window.clearTimeout(window.preloaderFallback);
+    preloader.classList.add('is-exiting');
+    window.setTimeout(() => {
+      document.documentElement.classList.remove('is-loading');
+      preloader.hidden = true;
+      pageContent.forEach((element, index) => { element.inert = inertBeforeLoading[index]; });
+    }, 550);
+  }
+
+  function waitForMinimum() {
+    if (waiting) return;
+    waiting = true;
+    if (!preloader.getAnimations) {
+      window.setTimeout(exitPreloader, Math.max(reducedMotion ? 0 : 1800, minimum - performance.now()));
+      return;
+    }
+    const animations = preloader.getAnimations({ subtree: true });
+    Promise.all(animations.map(animation => animation.finished.catch(() => {}))).then(() => {
+      window.setTimeout(exitPreloader, Math.max(250, minimum - performance.now()));
+    });
+  }
+
+  if (document.readyState === 'complete') waitForMinimum();
+  else {
+    window.addEventListener('load', waitForMinimum, { once: true });
+    window.setTimeout(waitForMinimum, 5000);
+  }
+}
+
+initPreloader();
+
 document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('year').textContent = new Date().getFullYear();
   initMenu();
