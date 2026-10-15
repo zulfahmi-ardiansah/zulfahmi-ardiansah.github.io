@@ -13,7 +13,8 @@
             "spring",
             "php",
             "laravel",
-            "javascript"
+            "javascript",
+            "react"
         ]
     },
     {
@@ -27,7 +28,8 @@
         ],
         "sets": [
             "figma",
-            "adobe"
+            "adobe",
+            "frame0"
         ]
     },
     {
@@ -42,6 +44,7 @@
         "sets": [
             "sql",
             "python",
+            "langGraph",
             "metabase",
             "highcharts"
         ]
