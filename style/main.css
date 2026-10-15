@@ -349,6 +349,11 @@ html.is-loading { overflow: hidden; }
 	z-index: 1;
 	animation: hero-enter 1.15s cubic-bezier(0.18, 0.65, 0.25, 1) both;
 }
+html.is-loading .hero-layout,
+html.is-loading .hero-ambient span,
+html.is-loading .scroll-track span {
+	animation-play-state: paused;
+}
 .scroll-depth {
 	translate: 0 var(--scroll-offset, 0px);
 }
@@ -536,7 +541,7 @@ html.motion-ready #project-feature {
 }
 .section-heading h2 {
 	margin: 0;
-	font-size: clamp(43px, 5.8vw, 78px);
+	font-size: clamp(43px, 5.8vw, 60px);
 	line-height: 1.04;
 	letter-spacing: -0.07em;
 }
@@ -874,7 +879,7 @@ html.motion-ready #project-feature {
 .feature-content h3 {
 	max-width: 630px;
 	margin: 51px 0 25px;
-	font-size: clamp(39px, 4.7vw, 65px);
+	font-size: clamp(39px, 4.7vw, 50px);
 	line-height: 1.08;
 	letter-spacing: -0.07em;
 }
@@ -1089,7 +1094,7 @@ html.motion-ready #project-feature {
 }
 .contact-inner h2 {
 	margin: 0;
-	font-size: clamp(72px, 12vw, 155px);
+	font-size: clamp(72px, 12vw, 100px);
 	line-height: 0.96;
 	letter-spacing: -0.09em;
 }
