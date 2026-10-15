@@ -23,10 +23,13 @@ async function loadData(file, targetId, render) {
     const rows = await response.json();
     if (!Array.isArray(rows)) throw new Error('Expected an array');
     target.replaceChildren(...rows.map(render));
+    target.removeAttribute('data-static');
     if (!rows.length) target.append(element('p', 'data-status', 'Nothing to show yet.'));
     return rows;
   } catch (error) {
-    target.replaceChildren(element('p', 'data-status', 'This section could not be loaded. Please refresh the page.'));
+    if (!target.hasAttribute('data-static')) {
+      target.replaceChildren(element('p', 'data-status', 'This section could not be loaded. Please refresh the page.'));
+    }
     console.error(`Could not load ${file}:`, error);
     return [];
   }

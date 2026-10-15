@@ -5,12 +5,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080808">
-  <meta name="description" content="Zulfahmi Ardiansah builds web products across engineering, interface design, and data. Explore selected work in operations, public services, and education.">
+  <meta name="description" content="Zulfahmi Ardiansah is a Jakarta-based web developer working across backend engineering, interface design, and data. Explore selected projects and writing.">
   <meta name="author" content="Zulfahmi Ardiansah">
   <meta name="google-site-verification" content="NPqWfc3LGSQ6XS_QXx1eKRzoxvCu_zSYCrytIoPtzrY">
   
-  <title>Zulfahmi Ardiansah | Develop Design Data</title>
+  <title>Zulfahmi Ardiansah | Web Developer, Design &amp; Data</title>
+  <link rel="canonical" href="https://zulfahmi-ardiansah.github.io/">
   <link rel="icon" href="./image/logo.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Zulfahmi Ardiansah">
+  <meta property="og:title" content="Zulfahmi Ardiansah | Web Developer, Design &amp; Data">
+  <meta property="og:description" content="Jakarta-based web developer working across backend engineering, interface design, and data. Explore selected projects and writing.">
+  <meta property="og:url" content="https://zulfahmi-ardiansah.github.io/">
+  <meta property="og:image" content="https://zulfahmi-ardiansah.github.io/image/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Zulfahmi Ardiansah. Web development, design, and data.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Zulfahmi Ardiansah | Web Developer, Design &amp; Data">
+  <meta name="twitter:description" content="Jakarta-based web developer working across backend engineering, interface design, and data.">
+  <meta name="twitter:image" content="https://zulfahmi-ardiansah.github.io/image/social-card.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://zulfahmi-ardiansah.github.io/#website",
+          "url": "https://zulfahmi-ardiansah.github.io/",
+          "name": "Zulfahmi Ardiansah",
+          "description": "Portfolio of a Jakarta-based web developer working across backend engineering, interface design, and data.",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://zulfahmi-ardiansah.github.io/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://zulfahmi-ardiansah.github.io/#person",
+          "name": "Zulfahmi Ardiansah",
+          "url": "https://zulfahmi-ardiansah.github.io/",
+          "jobTitle": "Web Developer",
+          "description": "Web developer based in Jakarta, Indonesia, with work in backend engineering, interface design, and data.",
+          "homeLocation": { "@type": "Place", "name": "Jakarta, Indonesia" },
+          "knowsAbout": ["Web development", "Backend engineering", "Interface design", "Data analysis"],
+          "sameAs": [
+            "https://github.com/zulfahmi-ardiansah",
+            "https://www.linkedin.com/in/zulfahmi-ardiansah/",
+            "https://www.instagram.com/xxdev.id/",
+            "https://dribbble.com/xxdev_id"
+          ]
+        }
+      ]
+    }
+  </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +69,7 @@
     window.preloaderFallback = setTimeout(() => document.documentElement.classList.remove('is-loading'), 8000);
   </script>
   <link rel="stylesheet" href="./style/main.css">
+  <noscript><style>.project-shell, .project-footer { display: none; }</style></noscript>
 
   <script>
     if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -131,8 +180,11 @@
           <h3 class="aside-title">Development work in Indonesia &amp; Japan<span class="period">.</span></h3>
           <div class="experience">
             <p class="experience-label">Where I've worked</p>
-            <div id="experience-list" class="experience-list" aria-live="polite">
-              <p class="data-status">Loading experience…</p>
+            <div id="experience-list" class="experience-list" aria-live="polite" data-static>
+              <!-- static:experience:start -->
+              <article class="experience-item"><span class="experience-period">2019 - Now</span><div><h4>Anggada Duta Wisesa (ID)</h4><p>Software Developer &amp; Product RnD</p></div></article>
+              <article class="experience-item"><span class="experience-period">2018 - Now</span><div><h4>Freelancer (ID &amp; JP)</h4><p>Independent Web Developer</p></div></article>
+              <!-- static:experience:end -->
             </div>
           </div>
         </aside>
@@ -147,8 +199,12 @@
         </div>
         <p>Three disciplines work together.</p>
       </div>
-      <div id="skillset-list" class="skill-grid" aria-live="polite">
-        <p class="data-status">Loading skillsets…</p>
+      <div id="skillset-list" class="skill-grid" aria-live="polite" data-static>
+        <!-- static:skillset:start -->
+        <article class="skill-card" id="skill-develop"><div class="skill-top"><span class="skill-index">01</span><img src="./image/develop.svg" alt="" loading="lazy"></div><h3>Develop</h3><p class="skill-tagline">Code Build Deliver</p><p class="skill-summary">Web development turns requirements into working applications. I build back-end logic and front-end interfaces, connecting the system to the screens people use.</p><ul class="skill-roles"><li>Back-End Engineer</li><li>Front-End Engineer</li></ul><p class="stack-label">TOOLS I USE</p><ul class="tool-list"><li><img src="./image/java.svg" alt="" loading="lazy"><span>java</span></li><li><img src="./image/spring.svg" alt="" loading="lazy"><span>spring</span></li><li><img src="./image/php.svg" alt="" loading="lazy"><span>php</span></li><li><img src="./image/laravel.svg" alt="" loading="lazy"><span>laravel</span></li><li><img src="./image/javascript.svg" alt="" loading="lazy"><span>javascript</span></li></ul></article>
+        <article class="skill-card" id="skill-design"><div class="skill-top"><span class="skill-index">02</span><img src="./image/design.svg" alt="" loading="lazy"></div><h3>Design</h3><p class="skill-tagline">Shape Experiences</p><p class="skill-summary">Design shapes how a product looks and how people move through it. I create interfaces and graphics that organize information and make each step easier to understand.</p><ul class="skill-roles"><li>User Interface Designer</li><li>Graphic Designer</li></ul><p class="stack-label">TOOLS I USE</p><ul class="tool-list"><li><img src="./image/figma.svg" alt="" loading="lazy"><span>figma</span></li><li><img src="./image/adobe.svg" alt="" loading="lazy"><span>adobe</span></li></ul></article>
+        <article class="skill-card" id="skill-data"><div class="skill-top"><span class="skill-index">03</span><img src="./image/data.svg" alt="" loading="lazy"></div><h3>Data</h3><p class="skill-tagline">Insights That Drive</p><p class="skill-summary">Data work turns records into information people can use. I prepare data, write queries, analyze results, and build visualizations that make those results easier to read.</p><ul class="skill-roles"><li>Data Engineer</li><li>Data Analytic</li></ul><p class="stack-label">TOOLS I USE</p><ul class="tool-list"><li><img src="./image/sql.svg" alt="" loading="lazy"><span>sql</span></li><li><img src="./image/python.svg" alt="" loading="lazy"><span>python</span></li><li><img src="./image/metabase.svg" alt="" loading="lazy"><span>metabase</span></li><li><img src="./image/highcharts.svg" alt="" loading="lazy"><span>highcharts</span></li></ul></article>
+        <!-- static:skillset:end -->
       </div>
     </section>
 
@@ -188,8 +244,12 @@
         </div>
         <p>Questions make ideas sharper.</p>
       </div>
-      <div id="blog-list" class="blog-list" aria-live="polite">
-        <p class="data-status">Loading writing…</p>
+      <div id="blog-list" class="blog-list" aria-live="polite" data-static>
+        <!-- static:blog:start -->
+        <a class="blog-item" href="https://www.instagram.com/p/DPXzK27AeZN/" target="_blank" rel="noopener noreferrer"><span class="blog-number">01</span><span class="blog-source">Instagram</span><h3>This article is for those of you who are studying programming</h3><span class="blog-action"><span>Read on Instagram</span><span aria-hidden="true">↗</span></span></a>
+        <a class="blog-item" href="https://www.instagram.com/p/DLsOYbPTtZX/" target="_blank" rel="noopener noreferrer"><span class="blog-number">02</span><span class="blog-source">Instagram</span><h3>Amidst the onslaught of AI, is it still relevant to learn programming?</h3><span class="blog-action"><span>Read on Instagram</span><span aria-hidden="true">↗</span></span></a>
+        <a class="blog-item" href="https://www.linkedin.com/posts/zulfahmi-ardiansah_gestalt-principle-activity-7228727875141558272-r077?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACpuHqYBtajmFirAI-NZsWhvO2LWovMykjc" target="_blank" rel="noopener noreferrer"><span class="blog-number">03</span><span class="blog-source">LinkedIn</span><h3>Gestalt Principle, set of principles of human perception</h3><span class="blog-action"><span>Read on LinkedIn</span><span aria-hidden="true">↗</span></span></a>
+        <!-- static:blog:end -->
       </div>
     </section>
 
@@ -201,8 +261,11 @@
         </div>
         <p>Tools keep me building.</p>
       </div>
-      <div id="setup-list" class="gear-grid" aria-live="polite">
-        <p class="data-status">Loading setup…</p>
+      <div id="setup-list" class="gear-grid" aria-live="polite" data-static>
+        <!-- static:setup:start -->
+        <div class="gear-column"><h3>Hardware</h3><ul><li><strong>Lenovo ThinkBook 14 G6</strong><span>AMD Ryzen 5 7530U</span></li><li><strong>Lenovo ThinkPad T470s</strong><span>Intel Core i5 7300U</span></li><li><strong>Lenovo ThinkPad Morfkho</strong><span>Mouse</span></li><li><strong>Kinera Wyvern with XINHS Dusk 4</strong><span>In-ear monitor</span></li></ul></div>
+        <div class="gear-column"><h3>Software</h3><ul><li><strong>Visual Studio Code</strong><span>Main Code Editor</span></li><li><strong>Spring Tool Suite</strong><span>Java IDE</span></li><li><strong>DBeaver</strong><span>Database Manager</span></li><li><strong>Claude Code, Codex, &amp; Gemini</strong><span>Code Agent</span></li><li><strong>Figma</strong><span>Interface and Vector design</span></li></ul></div>
+        <!-- static:setup:end -->
       </div>
     </section>
 

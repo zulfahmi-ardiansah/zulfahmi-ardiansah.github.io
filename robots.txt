@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zulfahmi-ardiansah.github.io/sitemap.xml
