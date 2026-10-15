@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Sobat Siswa",
+    "description": "An open-source, multi-tenant school information system developed in 2019 and awarded 3rd Winner Smart School at SEACC Batch 3.",
+    "link": "https://github.com/zulfahmi-ardiansah/pub-sobat-siswa-php"
+  },
+  {
+    "title": "Qlon",
+    "description": "Because you're too lazy to fight Word templates. Convert Quarto Markdown to polished .docx while you do literally anything else.",
+    "link": "https://github.com/zulfahmi-ardiansah/pub-quarto-chameleon"
+  },
+  {
+    "title": "Qodebook",
+    "description": "Bridges two code systems that describe different things: what a business sells (UNSPSC) and what a business does (KBLI).",
+    "link": "https://github.com/zulfahmi-ardiansah/pub-qode-book"
+  },
+  {
+    "title": "Athena",
+    "description": "A FastAPI service that converts document images and multi-page PDFs into clean, typed, structured JSON.",
+    "link": "https://github.com/zulfahmi-ardiansah/pub-athena-doc"
+  }
+]

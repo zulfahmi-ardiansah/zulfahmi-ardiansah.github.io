@@ -108,6 +108,19 @@ function renderProjectFeature(item, index, total) {
   return article;
 }
 
+function renderTool(item, index) {
+  const link = element('a', 'tool-item');
+  link.href = item.link;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  const action = element('span', 'tool-action', 'View on GitHub ');
+  const arrow = element('span', '', '↗');
+  arrow.setAttribute('aria-hidden', 'true');
+  action.append(arrow);
+  link.append(element('span', 'tool-number', String(index + 1).padStart(2, '0')), element('h3', '', item.title), element('p', '', item.description), action);
+  return link;
+}
+
 function renderBlog(item, index) {
   const link = element('a', 'blog-item');
   link.href = item.link;
@@ -254,7 +267,7 @@ function initScrollEffects() {
     hero.style.removeProperty('--hero-glow-shift');
   }
 
-  const revealSelector = '.section-heading, .about-copy, .about-side, .skill-card, .project-feature, .blog-item, .gear-column, .contact-bottom';
+  const revealSelector = '.section-heading, .about-copy, .about-side, .skill-card, .project-feature, .tool-item, .blog-item, .gear-column, .contact-bottom';
   let revealObserver;
   function observeReveals() {
     if (reducedMotion.matches || !document.documentElement.classList.contains('motion-ready')) return;
@@ -386,6 +399,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadData('projects', 'project-list', renderProjectChoice),
     loadData('experiences', 'experience-list', renderExperience),
     loadData('skillsets', 'skillset-list', renderSkill),
+    loadData('tools', 'tools-list', renderTool),
     loadData('blogs', 'blog-list', renderBlog),
     loadData('setup', 'setup-list', renderSetupColumn)
   ]);

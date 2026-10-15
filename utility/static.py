@@ -62,6 +62,16 @@ def render_skillset(items):
     return "\n".join(cards)
 
 
+def render_tools(items):
+    return "\n".join(
+        f'<a class="tool-item" href="{safe(item["link"])}" target="_blank" rel="noopener noreferrer">'
+        f'<span class="tool-number">{index:02}</span><h3>{safe(item["title"])}</h3>'
+        f'<p>{safe(item["description"])}</p>'
+        '<span class="tool-action">View on GitHub <span aria-hidden="true">↗</span></span></a>'
+        for index, item in enumerate(items, 1)
+    )
+
+
 def render_blog(items):
     return "\n".join(
         f'<a class="blog-item" href="{safe(item["link"])}" target="_blank" rel="noopener noreferrer">'
@@ -101,6 +111,7 @@ def main():
         "experience": render_experience(rows("experiences")),
         "certifications": render_certifications(rows("certifications")),
         "skillset": render_skillset(rows("skillsets")),
+        "tools": render_tools(rows("tools")),
         "blog": render_blog(rows("blogs")),
         "setup": render_setup(rows("setup")),
     }
