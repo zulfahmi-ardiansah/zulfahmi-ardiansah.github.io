@@ -615,29 +615,35 @@ html.motion-ready #project-feature {
 	border: 1px solid #565656;
 	background: var(--surface);
 }
-.side-kicker {
-	margin: 0;
-	color: var(--signal);
-	font-size: 11px;
-	text-transform: uppercase;
-	letter-spacing: 0.14em;
-	font-weight: 800;
-}
-.aside-title {
-	max-width: 470px;
-	margin: 21px 0 34px;
-	font-size: clamp(29px, 2.7vw, 37px);
-	line-height: 1.16;
-	letter-spacing: -0.055em;
-	font-weight: 750;
+.about-list-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 6px;
 }
 .experience-label {
-	margin: 0 0 12px;
+	margin: 0;
 	color: #d0d0d0;
 	font-size: 12px;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.14em;
+}
+.about-list-more {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	gap: 6px;
+	min-height: 44px;
+	color: #d0d0d0;
+	font-size: 12px;
+	font-weight: 700;
+	text-decoration: none;
+	white-space: nowrap;
+}
+.about-list-more:hover {
+	color: var(--signal);
 }
 .experience-item {
 	display: grid;
@@ -663,6 +669,9 @@ html.motion-ready #project-feature {
 	color: var(--muted);
 	font-size: 13px;
 	line-height: 1.5;
+}
+.certifications {
+	margin-top: 34px;
 }
 
 /* Three equal positions make the breadth legible in one glance. */
@@ -1556,9 +1565,6 @@ html.motion-ready #project-feature {
 	}
 	.about-side {
 		padding: 23px;
-	}
-	.aside-title {
-		font-size: 32px;
 	}
 	.experience-item {
 		grid-template-columns: 90px 1fr;

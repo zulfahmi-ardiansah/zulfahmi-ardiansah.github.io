@@ -1,5 +1,6 @@
 """Refresh the crawlable HTML snapshots from the portfolio JSON files."""
 
+from datetime import date
 from html import escape
 import json
 from pathlib import Path
@@ -24,6 +25,20 @@ def render_experience(items):
         f'<p>{safe(item["role"])}</p></div></article>'
         for item in items
     )
+
+
+def render_certifications(items):
+    months = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    cards = []
+    for item in items:
+        issued = date.fromisoformat(f'{item["date"]}-01')
+        label = f"{months[issued.month - 1]} {issued.year}"
+        cards.append(
+            f'<article class="experience-item"><time class="experience-period" datetime="{safe(item["date"])}">'
+            f'{label}</time><div><h4>{safe(item["name"])}</h4>'
+            f'<p>{safe(item["institution"])}</p></div></article>'
+        )
+    return "\n".join(cards)
 
 
 def render_skillset(items):
@@ -84,6 +99,7 @@ def main():
     source = INDEX.read_text(encoding="utf-8")
     blocks = {
         "experience": render_experience(rows("experiences")),
+        "certifications": render_certifications(rows("certifications")),
         "skillset": render_skillset(rows("skillsets")),
         "blog": render_blog(rows("blogs")),
         "setup": render_setup(rows("setup")),
