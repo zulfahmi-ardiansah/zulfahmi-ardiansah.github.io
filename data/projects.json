@@ -1,5 +1,41 @@
 [
     {
+        "title": "Enterprise Procurement Platform",
+        "client": "State-Owned Enterprise Network (ID)",
+        "role": "Full Stack Developer & Product R&D",
+        "related": "ADW",
+        "domain": "Enterprise procurement & spend analytics",
+        "scope": [
+            "Source-to-Contract (S2C) Workflows",
+            "Procure-to-Pay (P2P) Process",
+            "Vendor Management & Compliance",
+            "Spend Analysis & Demand Planning",
+            "Procurement Analytics & AI Integrations"
+        ],
+        "description": "A comprehensive enterprise procurement ecosystem spanning Source-to-Contract (S2C) and Procure-to-Pay (P2P) cycles for high-volume organizational purchasing. After completing a full stack client implementation project, I transitioned into product R&D to strengthen the platform's analytical capabilities. My focus centered on developing spend analysis features, demand planning intelligence, and executive monitoring dashboards that help organizations optimize strategic sourcing decisions.",
+        "sets": [
+            "java", "spring", "php", "laravel", "python", "langGraph", "javascript", "highcharts",  "sql"
+        ]
+    },
+    {
+        "title": "Centralized Vendor Database",
+        "client": "Upstream Energy Regulatory Body (ID)",
+        "role": "Full Stack Developer",
+        "related": "ADW",
+        "domain": "Upstream oil & gas compliance",
+        "scope": [
+            "Centralized Vendor Qualification Audits",
+            "Multi-Operator Verification Workflows",
+            "Staging Environments & Deployment Automation",
+            "System Analysis & Backlog Sprint Coordination",
+            "High-Concurrency Database Query Tuning"
+        ],
+        "description": "A centralized vendor qualification database connecting production sharing contractors across the upstream oil and gas sector to unify legal, financial, and technical vendor compliance. Alongside engineering backend verification logic and data models during implementation, I managed application deployments and release cycles, while partnering closely with system analysts to define technical scopes and sprint deliverables.",
+        "sets": [
+            "java", "spring", "sql", "ibm-db2"
+        ]
+    },
+    {
         "title": "Hygiene Inspection System",
         "client": "Doi Masaru (JP)",
         "role": "Back-End Developer",
