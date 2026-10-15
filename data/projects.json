@@ -1,7 +1,7 @@
 [
     {
         "title": "Enterprise Procurement Platform",
-        "client": "State-Owned Enterprise Network (ID)",
+        "client": "State-Owned Enterprise Network",
         "role": "Full Stack Developer & Product R&D",
         "related": "ADW",
         "domain": "Enterprise procurement & spend analytics",
@@ -12,14 +12,14 @@
             "Spend Analysis & Demand Planning",
             "Procurement Analytics & AI Integrations"
         ],
-        "description": "A comprehensive enterprise procurement ecosystem spanning Source-to-Contract (S2C) and Procure-to-Pay (P2P) cycles for high-volume organizational purchasing. After completing a full stack client implementation project, I transitioned into product R&D to strengthen the platform's analytical capabilities. My focus centered on developing spend analysis features, demand planning intelligence, and executive monitoring dashboards that help organizations optimize strategic sourcing decisions.",
+        "description": "A comprehensive enterprise procurement ecosystem spanning Source-to-Contract (S2C) and Procure-to-Pay (P2P) cycles for high-volume organizational purchasing. After completing a full stack client implementation project, I transitioned into product R&D to advance the platform's analytical capabilities and manage AI integrations. My focus centers on developing spend analysis features, demand planning intelligence, executive monitoring dashboards, and integrating AI services to optimize strategic sourcing decisions.",
         "sets": [
             "java", "spring", "php", "laravel", "python", "langGraph", "javascript", "highcharts",  "sql"
         ]
     },
     {
         "title": "Centralized Vendor Database",
-        "client": "Upstream Energy Regulatory Body (ID)",
+        "client": "Upstream Energy Regulatory Body",
         "role": "Full Stack Developer",
         "related": "ADW",
         "domain": "Upstream oil & gas compliance",
