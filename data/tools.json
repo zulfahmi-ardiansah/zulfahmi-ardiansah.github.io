@@ -15,8 +15,23 @@
     "link": "https://github.com/zulfahmi-ardiansah/pub-qode-book"
   },
   {
-    "title": "Athena",
+    "title": "Athena Doc",
     "description": "A FastAPI service that converts document images and multi-page PDFs into clean, typed, structured JSON.",
     "link": "https://github.com/zulfahmi-ardiansah/pub-athena-doc"
+  },
+  {
+    "title": "UX Tesbench",
+    "description": "Run user research for many products from one small app. Discovery surveys and moderated A/B tests of static prototypes.",
+    "link": "https://github.com/syaifullah18/ux-testbench"
+  },
+  {
+    "title": "Estima",
+    "description": "Turn chaotic e-commerce searches into structured intelligence. Automatically scrape, translate, and aggregate global marketplace prices.",
+    "link": "https://github.com/zulfahmi-ardiansah/pub-estima-tool"
+  },
+  {
+    "title": "Apollo Ship",
+    "description": "A small Windows app that saves YouTube Music playlists as local M4A files for listening in your own music player.",
+    "link": "https://github.com/zulfahmi-ardiansah/pub-apollo-ship"
   }
 ]
