@@ -77,8 +77,10 @@ function renderProjectChoice(item, index) {
   const button = element('button', 'project-choice');
   button.type = 'button';
   button.dataset.index = String(index);
-  button.setAttribute('aria-pressed', String(index === 0));
-  button.setAttribute('aria-controls', 'project-feature');
+  if (document.documentElement.classList.contains('motion-ready')) button.dataset.revealPending = '';
+  button.setAttribute('aria-haspopup', 'dialog');
+  button.setAttribute('aria-controls', 'project-dialog');
+  button.setAttribute('aria-label', `View details for ${item.title}`);
   button.append(element('span', 'project-choice-number', String(index + 1).padStart(2, '0')));
   const copy = element('span', 'project-choice-copy');
   copy.append(element('strong', '', item.title), element('span', 'project-choice-client', item.client));
@@ -88,17 +90,17 @@ function renderProjectChoice(item, index) {
   return button;
 }
 
-function renderProjectFeature(item, index, total) {
+function renderProjectFeature(item) {
   const article = element('article', 'feature-content');
-  const top = element('div', 'feature-top');
-  top.append(element('span', 'feature-domain', item.domain || 'Project'), element('span', 'feature-counter', `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`));
   const details = element('dl', 'feature-meta');
   [['Client', item.client], ['My role', `${item.related} / ${item.role}`]].forEach(([label, value]) => {
     const pair = element('div', 'feature-meta-item');
     pair.append(element('dt', '', label), element('dd', '', value));
     details.append(pair);
   });
-  article.append(top, element('h3', '', item.title), details, element('p', 'feature-description', item.description));
+  const title = element('h3', '', item.title);
+  title.id = 'project-dialog-title';
+  article.append(title, details, element('p', 'feature-description', item.description));
   const scope = element('div', 'feature-group');
   scope.append(element('h4', '', 'What it covers'));
   const scopeList = element('ul', 'scope-list');
@@ -181,58 +183,67 @@ function initMenu() {
 
 function initProjects(projects) {
   const choices = [...document.querySelectorAll('.project-choice')];
+  const dialog = document.getElementById('project-dialog');
   const feature = document.getElementById('project-feature');
-  const result = document.getElementById('project-result');
+  const counter = document.getElementById('project-dialog-counter');
+  const domain = document.getElementById('project-dialog-domain');
   const previous = document.getElementById('project-prev');
   const next = document.getElementById('project-next');
   if (!projects.length) {
-    feature.replaceChildren(element('p', 'data-status', 'Project details are unavailable.'));
-    result.textContent = '';
+    previous.disabled = true;
+    next.disabled = true;
     return;
   }
 
   let selected = 0;
-  let hasRendered = false;
-  let featureAnimation;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  function select(index, moveFocus = false, revealOnMobile = false) {
-    const nextIndex = (index + projects.length) % projects.length;
-    if (hasRendered && nextIndex === selected) return;
-    selected = nextIndex;
-    choices.forEach((choice, position) => choice.setAttribute('aria-pressed', String(position === selected)));
-    const animatePanel = hasRendered && feature.classList.contains('is-revealed') && !reducedMotion.matches && (featureAnimation || Number(getComputedStyle(feature).opacity) > .98);
-    featureAnimation?.cancel();
-    feature.replaceChildren(renderProjectFeature(projects[selected], selected, projects.length));
-    result.textContent = `Project ${selected + 1} of ${projects.length}`;
-    if (moveFocus) choices[selected].focus();
-    if (animatePanel) {
-      featureAnimation = feature.animate(
-        [{ opacity: 0, filter: 'blur(10px)' }, { opacity: 1, filter: 'blur(0)' }],
-        { duration: 900, easing: 'cubic-bezier(.18,.65,.25,1)' }
-      );
-    }
-    hasRendered = true;
-    if (revealOnMobile && window.matchMedia('(max-width: 760px)').matches) {
-      feature.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'nearest' });
+  let returnFocus = null;
+  function openProject(index, trigger) {
+    selected = (index + projects.length) % projects.length;
+    counter.textContent = `${String(selected + 1).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}`;
+    domain.textContent = projects[selected].domain || 'Project';
+    feature.replaceChildren(renderProjectFeature(projects[selected]));
+    feature.scrollTop = 0;
+    if (!dialog.open) {
+      returnFocus = trigger;
+      document.body.classList.add('project-dialog-open');
+      dialog.showModal();
+      dialog.querySelector('.project-dialog-close').focus();
     }
   }
-  reducedMotion.addEventListener('change', event => {
-    if (event.matches) featureAnimation?.cancel();
+  dialog.querySelector('.project-dialog-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('keydown', event => {
+    if (projects.length < 2) return;
+    if (event.key === 'ArrowLeft') { event.preventDefault(); openProject(selected - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); openProject(selected + 1); }
+  });
+  dialog.addEventListener('close', () => {
+    document.body.classList.remove('project-dialog-open');
+    returnFocus?.focus();
   });
   choices.forEach((choice, index) => {
-    choice.addEventListener('click', () => select(index, false, true));
+    choice.addEventListener('click', () => openProject(index, choice));
     choice.addEventListener('keydown', event => {
-      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') { event.preventDefault(); select(index + 1, true); }
-      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') { event.preventDefault(); select(index - 1, true); }
-      if (event.key === 'Home') { event.preventDefault(); select(0, true); }
-      if (event.key === 'End') { event.preventDefault(); select(projects.length - 1, true); }
+      const columns = window.matchMedia('(max-width: 760px)').matches ? 1 : 2;
+      let targetIndex;
+      if (event.key === 'ArrowRight') targetIndex = index + 1;
+      if (event.key === 'ArrowLeft') targetIndex = index - 1;
+      if (event.key === 'ArrowDown') targetIndex = index + columns;
+      if (event.key === 'ArrowUp') targetIndex = index - columns;
+      if (event.key === 'Home') targetIndex = 0;
+      if (event.key === 'End') targetIndex = projects.length - 1;
+      if (targetIndex !== undefined) {
+        event.preventDefault();
+        choices[Math.max(0, Math.min(projects.length - 1, targetIndex))].focus();
+      }
     });
   });
   previous.disabled = projects.length < 2;
   next.disabled = projects.length < 2;
-  previous.addEventListener('click', () => select(selected - 1, false, true));
-  next.addEventListener('click', () => select(selected + 1, false, true));
-  select(0);
+  previous.addEventListener('click', () => openProject(selected - 1));
+  next.addEventListener('click', () => openProject(selected + 1));
 }
 
 function initScrollEffects() {
@@ -277,10 +288,14 @@ function initScrollEffects() {
     hero.style.removeProperty('--hero-glow-shift');
   }
 
-  const revealSelector = '.section-heading, .about-copy, .about-side, .skill-card, .project-feature, .tool-item, .blog-item, .gear-column, .contact-bottom';
+  const revealSelector = '.section-heading, .about-copy, .about-side, .skill-card, .project-choice[data-reveal-pending], .tool-item, .blog-item, .gear-column, .contact-bottom';
   let revealObserver;
   function observeReveals() {
     if (reducedMotion.matches || !document.documentElement.classList.contains('motion-ready')) return;
+    if (!('IntersectionObserver' in window)) {
+      document.documentElement.classList.remove('motion-ready');
+      return;
+    }
     if (!revealObserver) {
       revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -407,7 +422,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMenu();
   const observeReveals = initPageMotion();
   const [projects] = await Promise.all([
-    loadData('projects', 'project-list', renderProjectChoice),
+    loadData('projects', 'project-list', renderProjectChoice).then(rows => {
+      observeReveals();
+      return rows;
+    }),
     loadData('experiences', 'experience-list', renderExperience).then(rows => updateExperienceYears(rows.map(row => row.period))),
     loadData('skillsets', 'skillset-list', renderSkill),
     loadData('tools', 'tools-list', renderTool),

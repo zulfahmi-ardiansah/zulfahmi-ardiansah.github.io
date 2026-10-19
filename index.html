@@ -69,7 +69,7 @@
     window.preloaderFallback = setTimeout(() => document.documentElement.classList.remove('is-loading'), 8000);
   </script>
   <link rel="stylesheet" href="./style/main.css">
-  <noscript><style>.project-shell, .project-footer { display: none; }</style></noscript>
+  <noscript><style>.project-shell { display: none; }</style></noscript>
 
   <script>
     if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -236,19 +236,28 @@
           <div id="project-list" class="project-list" aria-label="Choose a project">
             <p class="data-status">Loading projects…</p>
           </div>
-          <div id="project-feature" class="project-feature" aria-live="polite">
-            <p class="data-status">Loading project details…</p>
-          </div>
-        </div>
-        <div class="project-footer">
-          <p id="project-result" aria-live="polite"></p>
-          <div class="project-controls"><button id="project-prev" type="button" aria-label="Previous project"
-              disabled><span class="control-arrow" aria-hidden="true">←</span><span
-                class="control-label">Previous</span></button><button id="project-next" type="button"
-              aria-label="Next project" disabled><span class="control-label">Next</span><span class="control-arrow"
-                aria-hidden="true">→</span></button></div>
         </div>
       </div>
+      <dialog id="project-dialog" class="project-dialog" aria-labelledby="project-dialog-title">
+        <button id="project-prev" class="project-dialog-nav" type="button" aria-label="Previous project" disabled>
+          <span aria-hidden="true">🠔</span>
+        </button>
+        <div class="project-dialog-panel">
+          <div class="project-dialog-toolbar">
+            <div class="project-dialog-identity">
+              <span id="project-dialog-counter" class="feature-counter"></span>
+              <span id="project-dialog-domain" class="feature-domain"></span>
+            </div>
+            <button class="project-dialog-close" type="button" aria-label="Close project details">
+              <span>Close</span><span aria-hidden="true">✕</span>
+            </button>
+          </div>
+          <div id="project-feature" class="project-feature"></div>
+        </div>
+        <button id="project-next" class="project-dialog-nav" type="button" aria-label="Next project" disabled>
+          <span aria-hidden="true">🠖</span>
+        </button>
+      </dialog>
     </section>
 
     <section id="tools" class="section wrap" aria-labelledby="tools-title">
